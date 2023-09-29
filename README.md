@@ -16,6 +16,12 @@ This codebase is based on [human-aware-rl](https://github.com/HumanCompatibleAI/
 We provide an easy-to-use human-AI coordination framework for the Overcooked environment. Please check this [repo](https://github.com/LxzGordon/pecan_human_AI_coordination) for further details.
 # Instruction for usage
 
+## 0. Get the code
+ ```shell
+    git clone git@github.com:mimoralea/PECAN.git
+    cd PECAN
+```
+
 ## 1. Install
 Install relavant modules and the human-aware-rl package by
  ```shell
@@ -25,6 +31,7 @@ Install relavant modules and the human-aware-rl package by
     yes | pip install -r requirements.yaml
     cd human-aware-rl/
     ./install.sh
+    cd human-aware-rl
 ```
 
 ## 2. Stage 1&2 (Train the population and context encoder. Optional)
@@ -36,7 +43,6 @@ For easy usage, some pre-trained models are provided in this repo so you can ski
 ## 3. Train the ego agent
 Train the ego agent with the following comman. Note that you have to specificy paths of all 15 agents in the population in the  ```LOAD_FOLDER_LST``` variable, seperated by  ```:```.
  ```shell
- cd human-aware-rl/human-aware-rl
 export PBT_DATA_DIR=pbt_data_dir_2/ && python pbt/pbt_model_pool.py with fixed_mdp layout_name="simple" \
 EX_NAME="pbt_simple" TOTAL_STEPS_PER_AGENT=1.1e7 TRAINING_ITERATIONS=$training_iteration ALPHA_DECAY_HORIZON=$alpha_horizon ALPHA_FINAL=$alpha_final REW_SHAPING_HORIZON=$reward_shaping \
 LR=$lr POPULATION_SIZE=15 SEEDS="[$seeds]" GPU_ID=0 NUM_SELECTION_GAMES=$number_sel_games VF_COEF=$vf_coef MINIBATCHES=$minibatches \
