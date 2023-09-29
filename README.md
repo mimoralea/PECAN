@@ -21,8 +21,8 @@ Install relavant modules and the human-aware-rl package by
  ```shell
     conda create -n pecan 'python<3.8'
     conda activate pecan
-    conda install -y pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
-    pip install -r requirements.yaml
+    yes | pip install torch torchvision torchaudio
+    yes | pip install -r requirements.yaml
     cd human-aware-rl/
     ./install.sh
 ```
