@@ -29,7 +29,7 @@ Install relevant modules and the human-aware-rl package by
     conda activate pecan
     yes | pip install torch torchvision torchaudio
     yes | pip install -r requirements.yaml
-    cd human-aware-rl/
+    cd human-aware-rl
     ./install.sh
     cd human-aware-rl
 ```
