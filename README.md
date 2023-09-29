@@ -19,6 +19,9 @@ We provide an easy-to-use human-AI coordination framework for the Overcooked env
 ## 1. Install
 Install relavant modules and the human-aware-rl package by
  ```shell
+    conda create -n pecan 'python<3.8'
+    conda activate pecan
+    pip install -r requirements.yaml
     cd human-aware-rl/
     ./install.sh
 ```
