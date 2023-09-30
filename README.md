@@ -4,7 +4,7 @@
   <br>
   <i>(A picture of PECAN created by DALL·E)</i>
 </p>
-This codebase is implementation of the AAMAS 2023 paper [PECAN: Leveraging Policy Ensemble for Context-Aware Zero-Shot Human-AI Coordination](https://arxiv.org/abs/2301.06387). 
+This codebase implements the AAMAS 2023 paper [PECAN: Leveraging Policy Ensemble for Context-Aware Zero-Shot Human-AI Coordination](https://arxiv.org/abs/2301.06387). 
 
 This codebase is based on [human-aware-rl](https://github.com/HumanCompatibleAI/human_aware_rl/tree/neurips2019) and [MEP](https://github.com/ruizhaogit/maximum_entropy_population_based_training.git).
 <p align="center">
@@ -23,25 +23,25 @@ We provide an easy-to-use human-AI coordination framework for the Overcooked env
 ```
 
 ## 1. Install
-Install relavant modules and the human-aware-rl package by
+Install relevant modules and the human-aware-rl package by
  ```shell
-    conda create -n pecan 'python<3.8'
+    conda create -y -n pecan 'python<3.8'
     conda activate pecan
     yes | pip install torch torchvision torchaudio
     yes | pip install -r requirements.yaml
-    cd human-aware-rl/
+    cd human-aware-rl
     ./install.sh
     cd human-aware-rl
 ```
 
 ## 2. Stage 1&2 (Train the population and context encoder. Optional)
-Follow the instructions of the first step of [MEP](https://github.com/ruizhaogit/maximum_entropy_population_based_training.git) to train an maximum-entropy population.
+Follow the instructions of the first step of [MEP](https://github.com/ruizhaogit/maximum_entropy_population_based_training.git) to train a maximum-entropy population.
 
 Train the context encoder in [here](https://github.com/LxzGordon/PECAN/blob/master/human_aware_rl/human_aware_rl/context/model.py) via standard supervised learning with data collected in the stage 2 training of MEP.
 
-For easy usage, some pre-trained models are provided in this repo so you can skip this step.
+For easy usage, some pre-trained models are provided in this repo, so you can skip this step.
 ## 3. Train the ego agent
-Train the ego agent with the following comman. Note that you have to specificy paths of all 15 agents in the population in the  ```LOAD_FOLDER_LST``` variable, seperated by  ```:```.
+Train the ego agent with the following command. Note that you must specify paths of all 15 agents in the population in the  ```LOAD_FOLDER_LST``` variable, separated by  ```:```.
  ```shell
 export PBT_DATA_DIR=pbt_data_dir_2/ && python pbt/pbt_model_pool.py with fixed_mdp layout_name="simple" \
 EX_NAME="pbt_simple" TOTAL_STEPS_PER_AGENT=1.1e7 TRAINING_ITERATIONS=$training_iteration ALPHA_DECAY_HORIZON=$alpha_horizon ALPHA_FINAL=$alpha_final REW_SHAPING_HORIZON=$reward_shaping \
@@ -50,7 +50,7 @@ TIMESTAMP_DIR=False ENTROPY_POOL=$entropy_pool PRIORITIZED_SAMPLING=True ALPHA=$
 LOAD_FOLDER_LST="path1/:path2/:path3/..."
  ```
  
-An example with the pre-trained models:
+An example using the pre-trained models:
  ```shell
 export PBT_DATA_DIR=pbt_data_dir_2/ && python pbt/pbt_model_pool.py with fixed_mdp layout_name="simple" \
 EX_NAME="pbt_simple" TOTAL_STEPS_PER_AGENT=1.1e7 TRAINING_ITERATIONS=100 ALPHA_DECAY_HORIZON=70 \
